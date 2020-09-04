@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zghky.waterCollection.mapper.WaterCollectionMapper">
+  <resultMap id="BaseResultMap" type="com.zghky.waterCollection.domain.WaterCollection">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="county" jdbcType="VARCHAR" property="county" />
+    <result column="street" jdbcType="VARCHAR" property="street" />
+    <result column="location_code" jdbcType="VARCHAR" property="locationCode" />
+    <result column="village_name" jdbcType="VARCHAR" property="villageName" />
+    <result column="village_head" jdbcType="VARCHAR" property="villageHead" />
+    <result column="village_head_phone" jdbcType="VARCHAR" property="villageHeadPhone" />
+    <result column="village_population" jdbcType="INTEGER" property="villagePopulation" />
+    <result column="village_area" jdbcType="DOUBLE" property="villageArea" />
+    <result column="water_num" jdbcType="VARCHAR" property="waterNum" />
+    <result column="water_name" jdbcType="VARCHAR" property="waterName" />
+    <result column="water_type" jdbcType="VARCHAR" property="waterType" />
+    <result column="involved_villages" jdbcType="VARCHAR" property="involvedVillages" />
+    <result column="water_manager" jdbcType="VARCHAR" property="waterManager" />
+    <result column="unit" jdbcType="VARCHAR" property="unit" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="water_manager_phone" jdbcType="VARCHAR" property="waterManagerPhone" />
+    <result column="water_area" jdbcType="INTEGER" property="waterArea" />
+    <result column="waters_length" jdbcType="INTEGER" property="watersLength" />
+    <result column="waters_width" jdbcType="INTEGER" property="watersWidth" />
+    <result column="start_point" jdbcType="VARCHAR" property="startPoint" />
+    <result column="start_longitude" jdbcType="VARCHAR" property="startLongitude" />
+    <result column="start_dimension" jdbcType="VARCHAR" property="startDimension" />
+    <result column="end_point" jdbcType="VARCHAR" property="endPoint" />
+    <result column="end_longitude" jdbcType="VARCHAR" property="endLongitude" />
+    <result column="end_dimension" jdbcType="VARCHAR" property="endDimension" />
+    <result column="photos_path" jdbcType="VARCHAR" property="photosPath" />
+    <result column="transparency" jdbcType="DOUBLE" property="transparency" />
+    <result column="dissolved_oxygen" jdbcType="DOUBLE" property="dissolvedOxygen" />
+    <result column="ammonia_nitrogen" jdbcType="DOUBLE" property="ammoniaNitrogen" />
+    <result column="main_problem" jdbcType="VARCHAR" property="mainProblem" />
+    <result column="has_governed" jdbcType="INTEGER" property="hasGoverned" />
+    <result column="govern_progress" jdbcType="VARCHAR" property="governProgress" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_user_id" jdbcType="INTEGER" property="updateUserId" />
+    <result column="map_estimate" jdbcType="LONGVARCHAR" property="mapEstimate" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+    <result column="is_update" jdbcType="BIT" property="isUpdate" />
+    <result column="username" jdbcType="BIT" property="username" />
+  </resultMap>
+
+  <update id="deleteById" parameterType="java.lang.Integer">
+    update water_collection
+    set is_delete = 0
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="isUpdate" parameterType="java.lang.Integer">
+    update water_collection
+    set is_update = 0
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <insert id="insert" parameterType="com.zghky.waterCollection.domain.WaterCollection">
+    insert into water_collection (province, city,
+      county, street, location_code, village_name,
+      village_head, village_head_phone, village_population, 
+      village_area, water_num, water_name, 
+      water_type, involved_villages, water_manager, 
+      unit, `position`, water_manager_phone,
+      water_area, waters_length, waters_width, 
+      start_point, start_longitude, start_dimension, 
+      end_point, end_longitude, end_dimension, 
+      photos_path, transparency, dissolved_oxygen, 
+      ammonia_nitrogen, main_problem, has_governed, 
+      govern_progress, create_time, create_user_id, 
+      update_time, update_user_id, map_estimate
+      )
+    values (#{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{county,jdbcType=VARCHAR},
+      #{street,jdbcType=VARCHAR}, #{locationCode,jdbcType=VARCHAR}, #{villageName,jdbcType=VARCHAR},
+      #{villageHead,jdbcType=VARCHAR}, #{villageHeadPhone,jdbcType=VARCHAR}, #{villagePopulation,jdbcType=INTEGER}, 
+      #{villageArea,jdbcType=DOUBLE}, #{waterNum,jdbcType=VARCHAR}, #{waterName,jdbcType=VARCHAR}, 
+      #{waterType,jdbcType=VARCHAR}, #{involvedVillages,jdbcType=VARCHAR}, #{waterManager,jdbcType=VARCHAR}, 
+      #{unit,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR}, #{waterManagerPhone,jdbcType=VARCHAR}, 
+      #{waterArea,jdbcType=INTEGER}, #{watersLength,jdbcType=INTEGER}, #{watersWidth,jdbcType=INTEGER}, 
+      #{startPoint,jdbcType=VARCHAR}, #{startLongitude,jdbcType=VARCHAR}, #{startDimension,jdbcType=VARCHAR}, 
+      #{endPoint,jdbcType=VARCHAR}, #{endLongitude,jdbcType=VARCHAR}, #{endDimension,jdbcType=VARCHAR}, 
+      #{photosPath,jdbcType=VARCHAR}, #{transparency,jdbcType=DOUBLE}, #{dissolvedOxygen,jdbcType=DOUBLE}, 
+      #{ammoniaNitrogen,jdbcType=DOUBLE}, #{mainProblem,jdbcType=VARCHAR}, #{hasGoverned,jdbcType=INTEGER},
+      #{governProgress,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{createUserId,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=INTEGER}, #{mapEstimate,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+
+  <update id="updateById" parameterType="com.zghky.waterCollection.domain.WaterCollection">
+    update water_collection
+    set province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      county = #{county,jdbcType=VARCHAR},
+      street = #{street,jdbcType=VARCHAR},
+      location_code = #{locationCode,jdbcType=VARCHAR},
+      village_name = #{villageName,jdbcType=VARCHAR},
+      village_head = #{villageHead,jdbcType=VARCHAR},
+      village_head_phone = #{villageHeadPhone,jdbcType=VARCHAR},
+      village_population = #{villagePopulation,jdbcType=INTEGER},
+      village_area = #{villageArea,jdbcType=DOUBLE},
+      water_num = #{waterNum,jdbcType=VARCHAR},
+      water_name = #{waterName,jdbcType=VARCHAR},
+      water_type = #{waterType,jdbcType=VARCHAR},
+      involved_villages = #{involvedVillages,jdbcType=VARCHAR},
+      water_manager = #{waterManager,jdbcType=VARCHAR},
+      unit = #{unit,jdbcType=VARCHAR},
+      `position` = #{position,jdbcType=VARCHAR},
+      water_manager_phone = #{waterManagerPhone,jdbcType=VARCHAR},
+      water_area = #{waterArea,jdbcType=INTEGER},
+      waters_length = #{watersLength,jdbcType=INTEGER},
+      waters_width = #{watersWidth,jdbcType=INTEGER},
+      start_point = #{startPoint,jdbcType=VARCHAR},
+      start_longitude = #{startLongitude,jdbcType=VARCHAR},
+      start_dimension = #{startDimension,jdbcType=VARCHAR},
+      end_point = #{endPoint,jdbcType=VARCHAR},
+      end_longitude = #{endLongitude,jdbcType=VARCHAR},
+      end_dimension = #{endDimension,jdbcType=VARCHAR},
+      photos_path = #{photosPath,jdbcType=VARCHAR},
+      transparency = #{transparency,jdbcType=DOUBLE},
+      dissolved_oxygen = #{dissolvedOxygen,jdbcType=DOUBLE},
+      ammonia_nitrogen = #{ammoniaNitrogen,jdbcType=DOUBLE},
+      main_problem = #{mainProblem,jdbcType=VARCHAR},
+      has_governed = #{hasGoverned,jdbcType=INTEGER},
+      govern_progress = #{governProgress,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_user_id = #{createUserId,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_user_id = #{updateUserId,jdbcType=INTEGER},
+      map_estimate = #{mapEstimate,jdbcType=LONGVARCHAR},
+      is_update = #{isUpdate, jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, province, city, county, street, location_code, village_name, village_head, village_head_phone,
+    village_population, village_area, water_num, water_name, water_type, involved_villages, 
+    water_manager, unit, `position`, water_manager_phone, water_area, waters_length, waters_width,
+    start_point, start_longitude, start_dimension, end_point, end_longitude, end_dimension, 
+    photos_path, transparency, dissolved_oxygen, ammonia_nitrogen, main_problem, has_governed, 
+    govern_progress, create_time, create_user_id, update_time, update_user_id, map_estimate, is_update
+    from water_collection
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select c.id, province, city, county,  water_name, water_type, c.create_time, c.is_update,
+    u.username
+    from water_collection c
+    inner join sys_user u on c.create_user_id = u.id
+    <where>
+      is_delete = 1
+      <if test="userId != null">
+        and create_user_id = #{userId}
+      </if>
+
+      <if test="searchText != null and searchText != ''">
+        <bind name="_searchText" value="'%' + searchText + '%'"/>
+        and (village_name like #{_searchText} or village_head like #{_searchText}
+        or water_num like #{_searchText} or water_name like #{_searchText}
+        or involved_villages like #{_searchText} or water_manager like #{_searchText}
+        or start_point like #{_searchText} or end_point like #{_searchText})
+      </if>
+    </where>
+    order by c.create_time desc
+  </select>
+</mapper>

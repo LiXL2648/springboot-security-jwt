@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zghky.waterCollection.config.auth.MyUserDetailsMapper">
+
+    <select id="findByUserName" resultType="com.zghky.waterCollection.config.auth.MyUserDetails">
+        select id userId, username, password, enabled from sys_user where username = #{username}
+    </select>
+
+    <select id="findRoleByUserName" resultType="string">
+        select role_code from sys_user u
+        left join user_role ur on u.id = ur.user_id
+        left join sys_role r on r.id = ur.role_id
+        where u.username = #{username}
+   </select>
+
+    <select id="findAuthorityByRoleCodes" resultType="string">
+        select url from sys_role r
+        left join role_menu rm on r.id = rm.role_id
+        left join sys_menu m on m.id = rm.menu_id
+        <where>
+            <choose>
+                <when test="roles == null || roles.size() == 0">
+                    role_code = ''
+                </when>
+                <otherwise>
+                    role_code in
+                    <foreach collection="roles" item="role" open="(" separator=", " close=")">
+                        #{role}
+                    </foreach>
+                </otherwise>
+            </choose>
+        </where>
+   </select>
+</mapper>
