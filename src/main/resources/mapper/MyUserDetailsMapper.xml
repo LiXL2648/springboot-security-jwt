@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zghky.waterCollection.config.auth.MyUserDetailsMapper">
+<mapper namespace="com.li.jwt.config.auth.MyUserDetailsMapper">
 
-    <select id="findByUserName" resultType="com.zghky.waterCollection.config.auth.MyUserDetails">
+    <select id="findByUserName" resultType="com.li.jwt.config.auth.MyUserDetails">
         select id userId, username, password, enabled from sys_user where username = #{username}
     </select>
 

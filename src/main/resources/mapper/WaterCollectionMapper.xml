@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zghky.waterCollection.mapper.WaterCollectionMapper">
-  <resultMap id="BaseResultMap" type="com.zghky.waterCollection.domain.WaterCollection">
+<mapper namespace="com.li.jwt.mapper.WaterCollectionMapper">
+  <resultMap id="BaseResultMap" type="com.li.jwt.domain.WaterCollection">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="province" jdbcType="VARCHAR" property="province" />
     <result column="city" jdbcType="VARCHAR" property="city" />
@@ -59,7 +59,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <insert id="insert" parameterType="com.zghky.waterCollection.domain.WaterCollection">
+  <insert id="insert" parameterType="com.li.jwt.domain.WaterCollection">
     insert into water_collection (province, city,
       county, street, location_code, village_name,
       village_head, village_head_phone, village_population, 
@@ -90,7 +90,7 @@
       )
   </insert>
 
-  <update id="updateById" parameterType="com.zghky.waterCollection.domain.WaterCollection">
+  <update id="updateById" parameterType="com.li.jwt.domain.WaterCollection">
     update water_collection
     set province = #{province,jdbcType=VARCHAR},
       city = #{city,jdbcType=VARCHAR},

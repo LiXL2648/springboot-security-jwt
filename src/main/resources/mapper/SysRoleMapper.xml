@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zghky.waterCollection.mapper.SysRoleMapper">
+<mapper namespace="com.li.jwt.mapper.SysRoleMapper">
 
-  <resultMap id="BaseResultMap" type="com.zghky.waterCollection.domain.SysRole">
+  <resultMap id="BaseResultMap" type="com.li.jwt.domain.SysRole">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="role_name" jdbcType="VARCHAR" property="roleName" />
     <result column="role_code" jdbcType="VARCHAR" property="roleCode" />
@@ -18,7 +18,7 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insert" parameterType="com.zghky.waterCollection.domain.SysRole">
+  <insert id="insert" parameterType="com.li.jwt.domain.SysRole">
     insert into sys_role (id, role_name, role_code, 
       role_desc, sort, status, create_time, update_time
       )
@@ -28,7 +28,7 @@
       )
   </insert>
 
-  <update id="updateById" parameterType="com.zghky.waterCollection.domain.SysRole">
+  <update id="updateById" parameterType="com.li.jwt.domain.SysRole">
     update sys_role
     set role_name = #{roleName,jdbcType=VARCHAR},
       role_code = #{roleCode,jdbcType=VARCHAR},
